@@ -1,0 +1,50 @@
+# Copy this file on GitHub to: .github/workflows/release-macos.yml
+# (Creating it in the browser avoids “workflow scope” errors from old HTTPS tokens.)
+#
+# Byggir Apple Silicon-app og legur ZIP sum workflow-artifakt.
+# Við git-tag v1.2.3 (push) verður eisini GitHub Release við sama ZIP.
+name: Build macOS (Apple Silicon)
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            10.0.x
+
+      - name: Make scripts executable
+        run: |
+          chmod +x lav-klar-til-deling.sh packaging/macos/mk-icns.sh
+
+      - name: Build distributable ZIP
+        run: ./lav-klar-til-deling.sh
+
+      - name: Upload ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Logtingsval2026-til-mac-Apple-Silicon
+          path: dist/til-deling/Logtingsval2026-til-mac-Apple-Silicon.zip
+
+      - name: Create release (only when a version tag is pushed)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/til-deling/Logtingsval2026-til-mac-Apple-Silicon.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

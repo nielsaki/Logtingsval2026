@@ -1,0 +1,92 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:Logtingsval2026"
+        x:Class="Logtingsval2026.MainWindow"
+        Title="Løgtingsval"
+        Width="1420"
+        Height="920"
+        MinWidth="1024"
+        MinHeight="680"
+        KeyDown="OnWindowKeyDown">
+  <Grid ColumnDefinitions="2.1*,1.2*">
+    <!-- Vinstri: yvirlit -->
+    <DockPanel Grid.Column="0">
+      <StackPanel DockPanel.Dock="Top" Margin="12,10,10,8" Spacing="10">
+        <Image Source="avares://Logtingsval2026/Assets/app-logo.png"
+               Width="96"
+               Height="96"
+               Stretch="Uniform"
+               HorizontalAlignment="Left" />
+        <StackPanel Orientation="Horizontal" Spacing="10">
+          <Button x:Name="BtnLv26" Content="Dagfør" Click="OnFetchLv26Click" Padding="12,6" />
+          <Button x:Name="BtnDummyNew" Content="Nýggj til vélrænum prógvum" Click="OnNewDummyClick" Padding="12,6" IsVisible="False" />
+          <CheckBox x:Name="ChkAuto" Content="Dagfør sjálvvirkandi hvørt 5. sekund" IsChecked="True" VerticalAlignment="Center" />
+        </StackPanel>
+        <TextBlock x:Name="ModeBanner" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap" />
+        <TextBlock x:Name="HeaderDetail" Opacity="0.85" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Button x:Name="BtnCoalitions" Content="Samgongumøguleikar" Click="OnCoalitionsClick" Padding="12,6" />
+          <TextBlock x:Name="SumMandatesLabel" FontWeight="Bold" VerticalAlignment="Center" TextWrapping="Wrap" />
+        </StackPanel>
+        <TextBlock Opacity="0.7" TextWrapping="Wrap" FontSize="12"
+                   Text="Vel flokkar fyri at gera egnu samgongumøguleikar" />
+      </StackPanel>
+      <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="280" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <local:MandateArcView x:Name="ArcView"
+                              Grid.Row="0"
+                              Margin="12,4,12,0"
+                              Height="280"
+                              MinHeight="240"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              ClipToBounds="False" />
+        <ScrollViewer Grid.Row="1"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+          <StackPanel x:Name="PartyRowsHost" Margin="12,8,12,12" Spacing="4" />
+        </ScrollViewer>
+      </Grid>
+    </DockPanel>
+
+    <!-- Høgrinum: vald / topskorarar -->
+    <Border Grid.Column="1"
+            Background="#14141c"
+            BorderBrush="#2a2a38"
+            BorderThickness="1"
+            CornerRadius="8"
+            Margin="0,10,12,12"
+            Padding="10,8">
+      <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Spacing="8" Margin="0,0,0,8">
+          <TextBlock x:Name="PeopleInfoHeader"
+                     TextWrapping="Wrap"
+                     Opacity="0.9"
+                     FontSize="12" />
+          <TextBox x:Name="PeopleSearch"
+                   Watermark="Leita eftir navni …"
+                   />
+        </StackPanel>
+        <TabControl x:Name="PeopleTabs"
+                    VerticalAlignment="Stretch"
+                    VerticalContentAlignment="Stretch">
+          <TabItem Header="Valdir persónar">
+            <ContentControl x:Name="ElectedPanelHost"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch" />
+          </TabItem>
+          <TabItem Header="Topskorarar (øll)">
+            <ScrollViewer x:Name="ScrollTops"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch" />
+          </TabItem>
+        </TabControl>
+      </DockPanel>
+    </Border>
+  </Grid>
+</Window>
