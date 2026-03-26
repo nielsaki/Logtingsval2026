@@ -1,0 +1,45 @@
+# Build / publish
+dist/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.userosscache
+*.suo
+*.cache
+publish/
+
+# IDE
+.idea/
+.vs/
+*.DotSettings.user
+.vscode/*
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+
+# Avalonia designer
+*.axaml.g.cs
+
+# Lokale prøver (ikkje í git)
+*.app.tar
+*.tar.gz
+
+# Python (gamal skrá, skal ikki í git)
+__pycache__/
+*.py[cod]
