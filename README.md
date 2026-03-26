@@ -1,11 +1,22 @@
 # Løgtingsval
 
-**[Download for Mac (Apple Silicon)](https://nielsaki.github.io/Logtingsval2026/)**
+**Download page (open this address in the browser):**  
+**https://nielsaki.github.io/Logtingsval2026/**
+
+Use the line above **exactly** — it must end with **`/Logtingsval2026/`**.  
+Opening only `https://nielsaki.github.io` (with nothing after it) shows **“There isn’t a GitHub Pages site here”** and is the wrong place.
 
 You get a **ZIP** — open it, put **`Logtingsval2026.app`** where you like, and run it. **Nothing to install** (no .NET, no Terminal, no build). The app is **self-contained**.
 
-**Direct link** (same file as the button above):  
+**Direct ZIP** (works once a release exists with this file name):  
 https://github.com/nielsaki/Logtingsval2026/releases/latest/download/Logtingsval2026-til-mac-Apple-Silicon.zip
+
+### If the page is still 404, or the ZIP link fails
+
+Whoever owns the repository must do **both** once:
+
+1. **Turn on GitHub Pages:** repo **Settings → Pages → Build and deployment →** source **Deploy from a branch**, branch **`main`**, folder **`/docs`**, then **Save**. Wait a minute and open **https://nielsaki.github.io/Logtingsval2026/** again.
+2. **Publish a release** that includes **`Logtingsval2026-til-mac-Apple-Silicon.zip`** (e.g. create a **Release** on GitHub and attach that file from `dist/til-deling/` after running `./lav-klar-til-deling.sh` on a Mac). Until a release exists, the “latest\" download link on GitHub returns 404 — the site’s download button also needs that release.
 
 ### First time on macOS
 
