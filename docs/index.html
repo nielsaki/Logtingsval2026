@@ -101,8 +101,8 @@
 <body>
   <main>
     <h1>Løgtingsval</h1>
-    <p class="lead">Mac við Apple Silicon (M1–M4 …). Tak niður ZIP, pakka út, set <code>Logtingsval2026.app</code> t.d. á skriviborðið. Eingin .NET og eingin Terminal — bert opna appina.</p>
-    <p class="lead" style="margin-top:-0.5rem;font-size:0.88rem;">Fyrstu ferð: høgrismell á appini → <strong>Opna</strong> → <strong>Opna</strong>, um macOS steðgar.</p>
+    <p class="lead"><strong>Ein knøttur</strong> — tú tekur niður <strong>eitt ZIP</strong> við <strong>bert appini</strong> (<code>Logtingsval2026.app</code> inni í). Eingin keldukoti, eingin bygging. ZIP-ið er stórt, tí alt .NET er pakkað í appina.</p>
+    <p class="lead" style="margin-top:-0.5rem;font-size:0.88rem;">Mac við Apple Silicon (M1–M4 …). Pakka út, flyt appina t.d. á skriviborðið. Fyrstu ferð: høgrismell → <strong>Opna</strong> → <strong>Opna</strong>, um macOS steðgar.</p>
 
     <a id="download" class="btn" href="#" role="button" aria-busy="true">Lesur seinstu útgávu…</a>
     <p id="status" class="status" aria-live="polite"></p>
@@ -178,7 +178,7 @@
       }
       btn.href = url;
       btn.download = ASSET;
-      btn.textContent = 'Tak niður (macOS, Apple Silicon)';
+      btn.textContent = 'Tak niður appina (ZIP)';
       if (data.tag_name) {
         statusEl.textContent = 'Útgáva: ' + data.tag_name;
       }
