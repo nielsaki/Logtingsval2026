@@ -56,7 +56,7 @@ public partial class MainWindow : Window
 
         Loaded += async (_, _) =>
         {
-            ModeBanner.Text = "Lesur inn KVF …";
+            ModeBanner.Text = "Dagførur úr KVF …";
             HeaderDetail.Text = "";
             await FetchLiveAsync();
         };
@@ -117,7 +117,7 @@ public partial class MainWindow : Window
 
     private async Task FetchLiveAsync()
     {
-        ModeBanner.Text = "Lesur inn KVF …";
+        ModeBanner.Text = "Dagførur úr KVF …";
         var snap = await KvfApi.FetchLv26Async(CancellationToken.None);
         if (snap != null)
             ApplySnapshot(snap);

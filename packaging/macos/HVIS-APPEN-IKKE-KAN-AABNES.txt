@@ -1,5 +1,5 @@
 ═══════════════════════════════════════════════════════════════
-  macOS: «Logtingsval2026» / «Dagfør» kan ikke åbnes
+  macOS: «Logtingsval2026» kan ikke åbnes
 ═══════════════════════════════════════════════════════════════
 
 Kør disse trin på DEN MAC, hvor appen skal køre (i Terminal):

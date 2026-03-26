@@ -1,29 +1,44 @@
-# Dagfør (Logtingsval2026)
+# Logtingsval2026
 
-Cross‑platform (**macOS today**) Avalonia desktop app for **Faroese parliamentary election** results from [**KVF**](https://kvf.fo/lv26): parties, mandate arc, elected candidates, top scorers by personal votes, and majority coalitions.
+Cross‑platform (**macOS today**) Avalonia desktop app for **Faroese parliamentary election** (***Løgtingsval***) results from [**KVF**](https://kvf.fo/lv26): parties, mandate arc, elected candidates, top scorers by personal votes, and majority coalitions.
+
+In the Faroese UI, **Dagfør** means **update** and is used only for refreshing data (manual **Dagfør** button and **Dagfør automatically every 5 seconds**). The app and window name is **Løgtingsval**.
 
 The shipped macOS build is **Apple Silicon** (M1–M4, …), **self-contained** — recipients **do not** install the .NET runtime.
 
+**End users should not clone this repository.** They only need the ZIP from a release or the small download page below.
+
 ---
 
-## One download link (for users)
+## Download page (one button for everyone)
 
-After you publish a **GitHub Release** that includes the file  
-`Logtingsval2026-til-mac-Apple-Silicon.zip`, the stable “latest release” URL is:
+The folder **`docs/`** is a minimal static site: one page with a **Download** button that points at the latest release asset **`Logtingsval2026-til-mac-Apple-Silicon.zip`** (via the GitHub API). Visitors never see the rest of the repo unless they follow “source” links.
+
+**Turn it on (once per repository)**
+
+1. On GitHub: **Settings → Pages**.
+2. **Build and deployment**: source **Deploy from a branch**, branch **`main`**, folder **`/docs`**, Save.
+3. After a minute, the site is at **`https://YOUR_USER.github.io/YOUR_REPO/`** (replace with your GitHub username and repository name).
+
+**Custom domain:** In **`docs/index.html`**, set `REPO_OVERRIDE = 'YOUR_USER/YOUR_REPO'` so the button still finds releases.
+
+---
+
+## Direct download link (optional)
+
+After a **GitHub Release** includes **`Logtingsval2026-til-mac-Apple-Silicon.zip`**, this URL always serves that file from the latest release:
 
 ```text
 https://github.com/YOUR_USER/YOUR_REPO/releases/latest/download/Logtingsval2026-til-mac-Apple-Silicon.zip
 ```
 
-Replace `YOUR_USER` and `YOUR_REPO` (e.g. `nielsaki` / `Logtingsval2026`).
-
-**How to get that file on the release**
+**How to publish that ZIP on the release**
 
 1. Push this repo to GitHub (see below).
-2. Run **Actions → “Build macOS (Apple Silicon)” → Run workflow** and download the **artifact**, *or* create a version tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) so the workflow can attach the ZIP to a **Release**.
-3. Ensure the published release includes **`Logtingsval2026-til-mac-Apple-Silicon.zip`** with that exact name so the `/releases/latest/download/...` link works.
+2. Run **Actions → “Build macOS (Apple Silicon)” → Run workflow** and download the **artifact**, *or* push a version tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) so the workflow can attach the ZIP to a **Release**.
+3. Ensure the release includes **`Logtingsval2026-til-mac-Apple-Silicon.zip`** with that exact name.
 
-Bundled instructions for recipients are produced under **`dist/til-deling/`** when you run `./lav-klar-til-deling.sh` (see **`LAES-MIG.txt`**, **`fix-app-paa-mac.sh`**, **`HVIS-APPEN-IKKE-KAN-AABNES.txt`**).
+Bundled instructions for recipients are produced under **`dist/til-deling/`** when you run `./lav-klar-til-deling.sh` locally (see **`LAES-MIG.txt`**, **`fix-app-paa-mac.sh`**, **`HVIS-APPEN-IKKE-KAN-AABNES.txt`**). That folder is gitignored — only the **release ZIP** and the **GitHub Pages** download page are meant for sharing.
 
 ---
 

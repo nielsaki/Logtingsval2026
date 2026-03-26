@@ -43,4 +43,3 @@ project.lock.json
 # Python (gamal skrá, skal ikki í git)
 __pycache__/
 *.py[cod]
-.github/
