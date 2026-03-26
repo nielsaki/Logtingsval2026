@@ -101,14 +101,14 @@
 <body>
   <main>
     <h1>Løgtingsval</h1>
-    <p class="lead">Mac-app (Apple Silicon) við valúrsliti úr KVF. Tak niður ZIP, pakka út og set <code>Logtingsval2026.app</code> á teldina.</p>
+    <p class="lead">Mac við Apple Silicon (M1–M4 …). Tak niður ZIP, pakka út, set <code>Logtingsval2026.app</code> t.d. á skriviborðið. Eingin .NET og eingin Terminal — bert opna appina.</p>
+    <p class="lead" style="margin-top:-0.5rem;font-size:0.88rem;">Fyrstu ferð: høgrismell á appini → <strong>Opna</strong> → <strong>Opna</strong>, um macOS steðgar.</p>
 
     <a id="download" class="btn" href="#" role="button" aria-busy="true">Lesur seinstu útgávu…</a>
     <p id="status" class="status" aria-live="polite"></p>
 
     <footer>
-      <span id="source-wrap" hidden>Kelda: <a id="source" href="#">GitHub</a> · </span>
-      Ikki almenn KVF-vørna. Les meira á <a id="readme" href="#">README</a> um bygging.
+      Ikki almenn KVF-vørna. Valúrslit koma úr KVF.
     </footer>
   </main>
 
@@ -157,14 +157,6 @@
     fail('Set REPO_OVERRIDE í index.html ella hosta á user.github.io/repo-name/.');
     return;
   }
-
-  var readme = document.getElementById('readme');
-  readme.href = 'https://github.com/' + repo + '#readme';
-
-  var sw = document.getElementById('source-wrap');
-  var source = document.getElementById('source');
-  source.href = 'https://github.com/' + repo;
-  sw.hidden = false;
 
   var api = 'https://api.github.com/repos/' + repo + '/releases/latest';
 

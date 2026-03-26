@@ -1,117 +1,49 @@
-# Logtingsval2026
+# Løgtingsval
 
-Cross‑platform (**macOS today**) Avalonia desktop app for **Faroese parliamentary election** (***Løgtingsval***) results from [**KVF**](https://kvf.fo/lv26): parties, mandate arc, elected candidates, top scorers by personal votes, and majority coalitions.
+**[Download for Mac (Apple Silicon)](https://nielsaki.github.io/Logtingsval2026/)**
 
-In the Faroese UI, **Dagfør** means **update** and is used only for refreshing data (manual **Dagfør** button and **Dagfør automatically every 5 seconds**). The app and window name is **Løgtingsval**.
+You get a **ZIP** — open it, put **`Logtingsval2026.app`** where you like, and run it. **Nothing to install** (no .NET, no Terminal, no build). The app is **self-contained**.
 
-The shipped macOS build is **Apple Silicon** (M1–M4, …), **self-contained** — recipients **do not** install the .NET runtime.
+**Direct link** (same file as the button above):  
+https://github.com/nielsaki/Logtingsval2026/releases/latest/download/Logtingsval2026-til-mac-Apple-Silicon.zip
 
-**End users should not clone this repository.** They only need the ZIP from a release or the small download page below.
+### First time on macOS
 
----
+If the Mac says the app can’t be checked for malware: **Right‑click the app → Open → Open** once. If it still fails, the ZIP from the release includes a short help file (`LAES-MIG.txt`) with steps — read that on the Mac, not the GitHub project page.
 
-## Download page (one button for everyone)
+### In the app
 
-The folder **`docs/`** is a minimal static site: one page with a **Download** button that points at the latest release asset **`Logtingsval2026-til-mac-Apple-Silicon.zip`** (via the GitHub API). Visitors never see the rest of the repo unless they follow “source” links.
-
-**Turn it on (once per repository)**
-
-1. On GitHub: **Settings → Pages**.
-2. **Build and deployment**: source **Deploy from a branch**, branch **`main`**, folder **`/docs`**, Save.
-3. After a minute, the site is at **`https://YOUR_USER.github.io/YOUR_REPO/`** (replace with your GitHub username and repository name).
-
-**Custom domain:** In **`docs/index.html`**, set `REPO_OVERRIDE = 'YOUR_USER/YOUR_REPO'` so the button still finds releases.
+Faroese election results from [**KVF**](https://kvf.fo/lv26): parties, mandate arc, candidates, coalitions. **Dagfør** means **update** (refresh data). The window title is **Løgtingsval**.
 
 ---
 
-## Direct download link (optional)
-
-After a **GitHub Release** includes **`Logtingsval2026-til-mac-Apple-Silicon.zip`**, this URL always serves that file from the latest release:
-
-```text
-https://github.com/YOUR_USER/YOUR_REPO/releases/latest/download/Logtingsval2026-til-mac-Apple-Silicon.zip
-```
-
-**How to publish that ZIP on the release**
-
-1. Push this repo to GitHub (see below).
-2. Run **Actions → “Build macOS (Apple Silicon)” → Run workflow** and download the **artifact**, *or* push a version tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) so the workflow can attach the ZIP to a **Release**.
-3. Ensure the release includes **`Logtingsval2026-til-mac-Apple-Silicon.zip`** with that exact name.
-
-Bundled instructions for recipients are produced under **`dist/til-deling/`** when you run `./lav-klar-til-deling.sh` locally (see **`LAES-MIG.txt`**, **`fix-app-paa-mac.sh`**, **`HVIS-APPEN-IKKE-KAN-AABNES.txt`**). That folder is gitignored — only the **release ZIP** and the **GitHub Pages** download page are meant for sharing.
+Unofficial viewer for personal use; **not** an official KVF product. Data: KVF `valurslit/lv2026`.
 
 ---
 
-## Build and package (on your Mac)
+<details>
+<summary><strong>Maintainers only</strong> — repository, Pages, releases, build</summary>
 
-Requirements: [.NET SDK](https://dotnet.microsoft.com/download) matching the project (e.g. **.NET 10**).
+This section is for people updating the app or the website. **End users do not need any of this.**
 
-**Full zip for sharing (recommended)**
+The GitHub repository holds **source code**. Sharing the app publicly is done with the **download page** (`docs/`, GitHub Pages) and **Releases** (ZIP asset `Logtingsval2026-til-mac-Apple-Silicon.zip`).
+
+**Pages (once):** Repository **Settings → Pages →** branch **`main`**, folder **`/docs`**. Site: `https://nielsaki.github.io/Logtingsval2026/`  
+Custom domain: in `docs/index.html`, set `REPO_OVERRIDE = 'nielsaki/Logtingsval2026'`.
+
+**Attach the ZIP to a release:** Push a tag `v*` so Actions can run, or run the workflow manually and upload the artifact — see `.github/workflows/release-macos.yml` (pushing this file needs a HTTPS token with **`workflow`** scope).
+
+**Build locally (maintainers):** [.NET SDK](https://dotnet.microsoft.com/download) (e.g. **.NET 10**). Then:
 
 ```bash
 chmod +x lav-klar-til-deling.sh packaging/macos/mk-icns.sh
 ./lav-klar-til-deling.sh
 ```
 
-Output: **`dist/til-deling/`** (ZIP + helper files).
+Output: `dist/til-deling/` (ZIP + helper texts for recipients). Or `.app` only: `./build-macos-app.sh` → `dist/Logtingsval2026.app`.
 
-**`.app` bundle only**
+**Git:** Initialise git only inside this project folder, not your home directory. Pushing workflow YAML may require PAT **`workflow`** scope.
 
-```bash
-chmod +x build-macos-app.sh
-./build-macos-app.sh
-# → dist/Logtingsval2026.app
-```
+**Gatekeeper / “can’t open” (reference):** `packaging/macos/HVIS-APPEN-IKKE-KAN-AABNES.txt`, `fix-app-paa-mac.sh`.
 
----
-
-## Git and GitHub (this folder only)
-
-If `git status` lists your **entire home directory**, `git init` was run in the wrong place. Initialise the repo **only** inside this project:
-
-```bash
-cd ~/Desktop/logtingsval2026
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-On GitHub, create a **new empty** repository (no README), then:
-
-```bash
-git remote add origin https://github.com/YOUR_USER/YOUR_REPO.git
-git branch -M main
-git push -u origin main
-```
-
-If `origin` already exists:
-
-```bash
-git remote set-url origin https://github.com/YOUR_USER/YOUR_REPO.git
-git push -u origin main
-```
-
-**Pushing workflow files** (`.github/workflows/…`) with HTTPS requires a Personal Access Token that includes the **`workflow`** scope (classic token) or equivalent permissions (fine‑grained token). Without it, GitHub rejects pushes that add or update workflow files.
-
----
-
-## GitHub Actions
-
-Workflow: **`.github/workflows/release-macos.yml`** (“Build macOS (Apple Silicon)”)
-
-- **Manual run:** *Actions* → select the workflow → *Run workflow* → download the **Artifacts** ZIP.
-- **Tag push** (`v*`): builds and can create a **Release** with the distributable ZIP (see workflow).
-
-Runners use **macOS** (`macos-latest`), suitable for **`osx-arm64`** publish.
-
----
-
-## macOS “can’t open the app” (Gatekeeper)
-
-See **`packaging/macos/HVIS-APPEN-IKKE-KAN-AABNES.txt`** and **`fix-app-paa-mac.sh`**. Users often need **Right‑click → Open** once, and/or `xattr -cr` on the `.app`.
-
----
-
-## Data / disclaimer
-
-Election numbers come from KVF (`valurslit/lv2026`). This repository is an **unofficial** viewer for local / family use; it is **not** an official KVF product.
+</details>
